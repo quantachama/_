@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP — QA Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- removed duplicate feather script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        .skill-pill {
+            transition: all 0.2s ease;
+        }
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <div id="vanta-bg" class="fixed inset-0 -z-10"></div>
+    
+    <!-- Navigation -->
+    <nav class="backdrop-blur-md bg-gray-900/80 border-b border-gray-800 fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                        JP&nbsp;<span class="text-white">QA-automation</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900/95 z-40 flex items-center justify-center backdrop-blur-lg">
+        <div class="text-center space-y-8">
+            <a href="#home" class="block text-2xl text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="#about" class="block text-2xl text-gray-300 hover:text-white transition-colors">About</a>
+            <a href="#skills" class="block text-2xl text-gray-300 hover:text-white transition-colors">Skills</a>
+            <a href="#contact" class="block text-2xl text-gray-300 hover:text-white transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text">
+                        <span class="block">I Automate</span>
+                        <span class="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">Quality Assurance</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Hi, I’m <strong>Jana</strong> — a QA-automation learner with an industrial-design background.
+                        I focus on readable, stable test suites, fast feedback loops, and quality gates that reflect real user behavior.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors">
+                            Get In Touch
+                        </a>
+                        <a href="#about" class="px-6 py-3 border border-gray-700 hover:bg-gray-800 rounded-lg font-medium transition-colors">
+                            My Story
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-20 blur-xl"></div>
+                    <div class="relative bg-gray-800/50 border border-gray-700 rounded-2xl overflow-hidden">
+                        <img src="1.png" alt="QA Automation" class="w-full h-auto">
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="mt-4 font-mono text-sm text-gray-300">
+                                <p class="text-blue-400">$ ./run_tests.sh</p>
+                                <p class="text-green-400">✓ 127 tests passed</p>
+                                <p class="text-green-400">✓ 0 tests failed</p>
+                                <p class="text-green-400">✓ Coverage: 92%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800/50 backdrop-blur-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Human Behind The Code</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl opacity-20 blur-lg"></div>
+                    <div class="relative bg-gray-900 border border-gray-700 rounded-2xl overflow-hidden">
+                        <img src="2.jpg" alt="Jana" class="w-full h-auto">
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">From Industrial Design → QA Automation</h3>
+                    <p class="text-gray-300 mb-4">
+                        I bring prototyping discipline and user empathy from <em>industrial design</em> into test design.
+                        I’m focused on building reliable, maintainable automation that protects UX quality at speed.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        My sweet spot: translating real user needs into robust test cases, then iterating like a designer
+                        until signal is strong and flakiness is low.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i data-feather="check-circle" class="w-5 h-5 mr-3 text-blue-400"></i>
+                            <span class="text-gray-300">Design tests like products: requirements → prototypes → iterate</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="command" class="w-5 h-5 mr-3 text-purple-400"></i>
+                            <span class="text-gray-300">Readable Page Objects, fixtures, clear assertions</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="zap" class="w-5 h-5 mr-3 text-yellow-400"></i>
+                            <span class="text-gray-300">Fast feedback loops (CI-friendly, flake-resistant suites)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Projects / Works Section -->
+	<section id="skills" class="py-20 ">
+	  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-12">
+		  <h2 class="text-3xl md:text-4xl font-bold mb-4">My Works</h2>
+		  <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+		  <p class="text-gray-400 mt-4">Live GitHub Pages + repos — real, testable projects.</p>
+		</div>
+
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+		  <!-- Project Card: QA Automation Wizard -->
+		  <article class="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden card-hover">
+			<!-- Optional: replace with a real screenshot -->
+			<img src="https://picsum.photos/seed/qa/800/400" alt="QA Automation Wizard" class="w-full h-40 object-cover">
+			<div class="p-6">
+			  <h3 class="text-xl font-bold mb-2">QA Automation Wizard</h3>
+			  <p class="text-gray-400 text-sm mb-4">
+				Tailwind + Vanta background, Formspree contact form, accessibility & responsiveness checks.
+			  </p>
+			  <div class="flex flex-wrap items-center gap-3 mb-4">
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">HTML</span>
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Tailwind</span>
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Formspree</span>
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Accessibility</span>
+			  </div>
+			  <div class="flex items-center gap-6">
+				<a href="https://jpnechama.github.io/qa-learning-journey/" target="_blank" rel="noopener"
+				   class="text-blue-400 hover:text-blue-300 inline-flex items-center gap-1">
+				  <i data-feather="external-link" class="w-4 h-4"></i> View Live
+				</a>
+				<!-- TODO: replace with the repo URL for this project -->
+				<a href="https://github.com/quantachama" target="_blank" rel="noopener"
+				   class="text-gray-400 hover:text-white inline-flex items-center gap-1">
+				  <i data-feather="github" class="w-4 h-4"></i> Code
+				</a>
+			  </div>
+			</div>
+		  </article>
+
+		  <!-- Project Card (duplicate and edit for each site) -->
+		  <article class="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden card-hover">
+			<img src="https://picsum.photos/seed/site2/800/400" alt="Project title" class="w-full h-40 object-cover">
+			<div class="p-6">
+			  <h3 class="text-xl font-bold mb-2">Project Title</h3>
+			  <p class="text-gray-400 text-sm mb-4">
+				One-sentence what/why. E.g., “Landing page with contact flow & test plan.”
+			  </p>
+			  <div class="flex flex-wrap items-center gap-3 mb-4">
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">HTML</span>
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">CSS</span>
+				<span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Testing</span>
+			  </div>
+			  <div class="flex items-center gap-6">
+				<!-- TODO: replace with live GitHub Pages link -->
+				<a href="https://YOUR-USER.github.io/YOUR-REPO/" target="_blank" rel="noopener"
+				   class="text-blue-400 hover:text-blue-300 inline-flex items-center gap-1">
+				  <i data-feather="external-link" class="w-4 h-4"></i> View Live
+				</a>
+				<!-- TODO: replace with specific repo -->
+				<a href="https://github.com/YOUR-USER/YOUR-REPO" target="_blank" rel="noopener"
+				   class="text-gray-400 hover:text-white inline-flex items-center gap-1">
+				  <i data-feather="github" class="w-4 h-4"></i> Code
+				</a>
+			  </div>
+			</div>
+		  </article>
+
+      <!-- Add more cards by duplicating the <article> block -->
+	  
+      <!-- Project: quantachama.github.io -->
+      <a href="https://quantachama.github.io/" target="_blank" rel="noopener"
+         class="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden card-hover block focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="relative">
+          <!-- Live preview screenshot via thum.io (you can swap to another service later) -->
+          <img
+            src="https://image.thum.io/get/width/1200/crop/650/https://quantachama.github.io/"
+            alt="Preview — quantachama.github.io"
+            class="w-full h-40 object-cover"
+            loading="lazy"
+            onerror="this.src='https://picsum.photos/seed/quantachama/1200/650'">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-1">Personal Site — quantachama.github.io</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Central hub. Portfolio links, experiments, and QA/design notes.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">GitHub Pages</span>
+          </div>
+        </div>
+      </a>
+	  
+	  
+	  <!-- Project: qa-learning-journey -->
+      <a href="https://quantachama.github.io/qa-learning-journey/" target="_blank" rel="noopener"
+         class="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden card-hover block focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="relative">
+          <img
+            src="https://image.thum.io/get/width/1200/crop/650/https://quantachama.github.io/qa-learning-journey/"
+            alt="Preview — QA Learning Journey"
+            class="w-full h-40 object-cover"
+            loading="lazy"
+            onerror="this.src='https://picsum.photos/seed/qajourney/1200/650'">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-1">QA Automation Wizard — Learning Journey</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Tailwind + Vanta background, Formspree contact form, test docs (STP/STD/STR).
+          </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Tailwind</span>
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Formspree</span>
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Accessibility</span>
+          </div>
+        </div>
+      </a>
+	  
+	   <!-- Project: FACES -->
+      <a href="https://quantachama.github.io/FACES/" target="_blank" rel="noopener"
+         class="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden card-hover block focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="relative">
+          <img
+            src="https://image.thum.io/get/width/1200/crop/650/https://quantachama.github.io/FACES/"
+            alt="Preview — FACES"
+            class="w-full h-40 object-cover"
+            loading="lazy"
+            onerror="this.src='https://picsum.photos/seed/faces/1200/650'">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-1">FACES</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Visual/creative playground. Great demo target for QA UI checks and responsive testing.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="skill-pill bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-xs">Responsive</span>
+          </div>
+        </div>
+      </a>
+    </div>
+	  
+	  
+    </div>
+  
+</section>
+
+
+
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800/50 backdrop-blur-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Bug-Free</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-gray-900 border border-gray-700 rounded-2xl overflow-hidden">
+                <div class="p-8">
+                    <!-- Formspree endpoint wired -->
+                    <form action="https://formspree.io/f/xblzgrle" method="POST">
+                        <input type="hidden" name="_subject" value="New message from Jana’s QA site">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="john@example.com" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell me about your testing needs..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="bg-gray-800 px-8 py-6 border-t border-gray-700">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="flex items-center mb-4 md:mb-0">
+                            <i data-feather="mail" class="w-5 h-5 mr-2 text-blue-400"></i>
+                            <a href="mailto:jp.idisegno@gmail.com" class="text-gray-300 hover:text-white">jp.idisegno@gmail.com</a>
+                        </div>
+                        <div class="flex items-center mb-4 md:mb-0">
+                            <i data-feather="phone" class="w-5 h-5 mr-2 text-blue-400"></i>
+                            <a href="tel:+972549175734" class="text-gray-300 hover:text-white">+972 54-917-5734</a>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/quantachama" target="_blank" rel="noopener" aria-label="GitHub"
+                               class="text-gray-400 hover:text-blue-400 transition-colors">
+                                <i data-feather="github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jpiddesign" target="_blank" rel="noopener" aria-label="LinkedIn"
+                               class="text-gray-400 hover:text-blue-400 transition-colors">
+                                <i data-feather="linkedin"></i>
+                            </a>
+                            <a href="mailto:jp.idisegno@gmail.com" aria-label="Email"
+                               class="text-gray-400 hover:text-blue-400 transition-colors">
+                                <i data-feather="mail"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 mb-4 md:mb-0">
+                    © <script>document.write(new Date().getFullYear())</script> Jana Pfaff. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0x111827,
+            points: 10.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>
